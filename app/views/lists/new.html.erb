@@ -1,0 +1,4 @@
+  <%= simple_form_for @list, defaults: { input_html: { class: 'form-group' } } do |f| %>
+    <%= f.input :name %>
+    <%= f.button :submit, class: 'btn btn-primary'  %>
+  <% end %>
