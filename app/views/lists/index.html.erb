@@ -1,9 +1,34 @@
-<h1>My Lists</h1>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
-  <%= link_to new_list_path, class: "btn btn-primary" do%>
-    <i class="fa-solid fa-plus"></i> Add a new list
-  <% end%>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('auditorium.jpg') %>')">
+  <div class="container d-flex align-items-center flex-column">
+    <h1>Save any kind of movies</h1>
+    <p>Classic</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-4">
+      <h1>My Lists</h1>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <%= link_to new_list_path, class: "btn btn-flat" do%>
+        <i class="fa-solid fa-plus"></i> Create a movie list
+      <% end%>
+    </div>
+  </div>
+</div>
+
+
+
+ <div class="container">
+  <div class="row mt-3">
+      <% @lists.each do |list| %>
+        <div class="col-4 mb-3">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('film-roll.jpg') %>')">
+          <%= link_to list.name, list_path(list) %>
+          </div>
+        </div>
+      <% end%>
+  </div>
+</div>

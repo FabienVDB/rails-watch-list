@@ -1,14 +1,31 @@
-<h1>List</h1>
-<%= @list.name %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('film-roll.jpg') %>')">
+  <div class="container d-flex align-items-center flex-column">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
 
-<%= link_to "add a movie", new_list_bookmark_path(@list), class:"btn btn-primary"%>
-<ul>
-  <% @list.movies.each do |movie| %>
-  <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
-  <li>
-    <%= movie.title %> <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
-  </li>
+<div class="container d-flex justify-content-end mt-5 mb-3">
+  <%= link_to "add a movie", new_list_bookmark_path(@list), class:"btn btn-flat"%>
+</div>
 
 
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row mb-3">
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
+      <div class="col-4 mb-3">
+        <div class="card-trip">
+          <img src=<%= movie.poster_url %> />
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= movie.title %></h2>
+              <p><%= movie.overview %></p>
+              <p class="comment mt-1"><i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %></p>
+            </div>
+            <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
