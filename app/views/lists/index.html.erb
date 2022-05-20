@@ -3,6 +3,12 @@
     <h1>Save any kind of movies</h1>
     <p>Classic</p>
   </div>
+  <div class="upper-left">
+      <%= link_to new_list_path, class: "btn btn-flat" do%>
+    <i class="fa-solid fa-plus"></i> Create a movie list
+  <% end%>
+  </div>
+
 </div>
 
 <div class="container">
@@ -10,23 +16,17 @@
     <div class="col-4">
       <h1>My Lists</h1>
     </div>
-    <div class="col-4"></div>
-    <div class="col-4">
-      <%= link_to new_list_path, class: "btn btn-flat" do%>
-        <i class="fa-solid fa-plus"></i> Create a movie list
-      <% end%>
-    </div>
   </div>
 </div>
-
 
 
  <div class="container">
   <div class="row mt-3">
       <% @lists.each do |list| %>
         <div class="col-4 mb-3">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('film-roll.jpg') %>')">
-          <%= link_to list.name, list_path(list) %>
+          <% img_url = list.photo.attached? ? cl_image_path(list.photo.key, height: 300, crop: :fill) : asset_path('film-roll.jpg') %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= img_url %>')">
+            <%= link_to list.name, list_path(list) %>
           </div>
         </div>
       <% end%>

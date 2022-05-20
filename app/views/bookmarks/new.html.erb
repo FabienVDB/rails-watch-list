@@ -1,5 +1,14 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('auditorium.jpg') %>')">
+  <div class="container d-flex align-items-center flex-column">
+    <h1>New movie bookmark</h1>
+    <p>Choose a movie and leave a comment</p>
+  </div>
+</div>
+
+<div class="container w-50">
   <%= simple_form_for [@list, @bookmark], defaults: { input_html: { class: 'form-group' } } do |f| %>
     <%= f.association :movie%>
     <%= f.input :comment %>
     <%= f.button :submit, class: 'btn btn-primary'  %>
   <% end %>
+</div>
