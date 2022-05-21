@@ -3,20 +3,20 @@
     <h1>Save any kind of movies</h1>
     <p>Classic</p>
   </div>
-  <div class="upper-left">
-      <%= link_to new_list_path, class: "btn btn-flat" do%>
-    <i class="fa-solid fa-plus"></i> Create a movie list
-  <% end%>
+  <div class="upper-right">
+    <%= link_to new_list_path, class: "btn btn-flat" do%>
+      <i class="fa-solid fa-plus"></i> Create a movie list
+    <% end%>
   </div>
 
 </div>
 
-<div class="container">
-  <div class="row mt-3">
-    <div class="col-4">
-      <h1>My Lists</h1>
-    </div>
-  </div>
+
+<div class="container d-flex justify-content-between mt-5 mb-3 align-items-baseline">
+  <h1>My Lists</h1>
+  <%= link_to new_list_path, class: "btn btn-flat my-3" do%>
+    <i class="fa-solid fa-plus"></i> Create a movie list
+  <% end%>
 </div>
 
 

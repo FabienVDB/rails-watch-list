@@ -5,24 +5,30 @@
   </div>
 </div>
 
-<div class="container d-flex justify-content-end mt-5 mb-3">
-  <%= link_to "add a movie", new_list_bookmark_path(@list), class:"btn btn-flat"%>
+<div class="container d-flex justify-content-between align-items-baseline mt-5 mb-3">
+    <%= link_to new_list_bookmark_path(@list), class:"btn btn-flat" do%>
+      <i class="fa-solid fa-plus"></i> add a movie
+    <% end %>
+    <%= link_to root_path, class:"btn btn-flat" do%>
+      <i class="fa-solid fa-rotate-left"></i> Back
+    <% end %>
 </div>
 
-
 <div class="container">
-  <div class="row mb-3">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
-      <div class="col-4 mb-3 d-flex align-items-stretch">
-        <div class="card-trip">
-          <img src=<%= movie.poster_url %> />
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= movie.title %></h2>
-              <p><%= movie.overview %></p>
-              <p class="comment mt-1"><i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %></p>
-            </div>
+       <div class="col">
+        <div class="card-movie">
+          <img src=<%= movie.poster_url %> alt=<%= movie.title %>/>
+          <div class="card-body">
+            <h5 class="card-title card-movie-title-font">
+              <%= movie.title %> <small class="text-muted">&#8226; 8.5 <i class="fa fa-star card-movie-star" aria-hidden="true"></i></small>
+            </h5>
+            <p class="card-text card-movie-text-font"><%= movie.overview %></p>
+          </div>
+          <div class="card-movie-footer">
+            <div class="card-movie-comment-font"><i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %></div>
             <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
           </div>
         </div>
